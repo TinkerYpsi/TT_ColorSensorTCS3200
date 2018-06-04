@@ -3,6 +3,7 @@
 
 #include <Arduino.h>
 
+#define NOT_IDENTIFIED  0
 #define RED_COLOR       1
 #define ORANGE_COLOR    2
 #define GREEN_COLOR     3
@@ -17,6 +18,8 @@ public:
   ColorSensorTCS3200();
   ColorSensorTCS3200(uint8_t S0_pin, uint8_t S1_pin, uint8_t S2_pin,
                      uint8_t S3_pin, uint8_t sensor_out_pin);
+  int readColor(bool serial_print_rgb_vals = false);
+  void printColor(int delay_time = 300);
 
 private:
   uint8_t m_S0_pin;
