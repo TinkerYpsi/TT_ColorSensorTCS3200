@@ -4,15 +4,15 @@
 ColorSensorTCS3200::ColorSensorTCS3200()
   : m_S0_pin(4), m_S1_pin(5), m_S2_pin(6), m_S3_pin(7), m_sensor_out_pin(8)
   {
-    pinMode(S0, OUTPUT);
-    pinMode(S1, OUTPUT);
-    pinMode(S2, OUTPUT);
-    pinMode(S3, OUTPUT);
-    pinMode(sensorOut, INPUT);
+    pinMode(m_S0_pin, OUTPUT);
+    pinMode(m_S1_pin, OUTPUT);
+    pinMode(m_S2_pin, OUTPUT);
+    pinMode(m_S3_pin, OUTPUT);
+    pinMode(m_sensor_out_pin, INPUT);
 
     // Setting frequency-scaling to 20%
-    digitalWrite(S0,HIGH);
-    digitalWrite(S1,LOW);
+    digitalWrite(m_S0_pin,HIGH);
+    digitalWrite(m_S1_pin,LOW);
   }
 
 ColorSensorTCS3200::ColorSensorTCS3200(uint8_t S0_pin, uint8_t S1_pin,
@@ -22,24 +22,24 @@ ColorSensorTCS3200::ColorSensorTCS3200(uint8_t S0_pin, uint8_t S1_pin,
   m_S2_pin(S2_pin), m_S3_pin(S3_pin),
   m_sensor_out_pin(sensor_out_pin)
 {
-  pinMode(S0, OUTPUT);
-  pinMode(S1, OUTPUT);
-  pinMode(S2, OUTPUT);
-  pinMode(S3, OUTPUT);
-  pinMode(sensorOut, INPUT);
+  pinMode(m_S0_pin, OUTPUT);
+  pinMode(m_S1_pin, OUTPUT);
+  pinMode(m_S2_pin, OUTPUT);
+  pinMode(m_S3_pin, OUTPUT);
+  pinMode(m_sensor_out_pin, INPUT);
 
   // Setting frequency-scaling to 20%
-  digitalWrite(S0,HIGH);
-  digitalWrite(S1,LOW);
+  digitalWrite(m_S0_pin,HIGH);
+  digitalWrite(m_S1_pin,LOW);
 }
 
 int ColorSensorTCS3200::readColor(bool serial_print_rgb_vals)
 {
   // Setting red filtered photodiodes to be read
-  digitalWrite(S2, LOW);
-  digitalWrite(S3, LOW);
+  digitalWrite(m_S2_pin, LOW);
+  digitalWrite(m_S3_pin, LOW);
   // Reading the output frequency
-  frequency = pulseIn(sensorOut, LOW);
+  int frequency = pulseIn(m_sensor_out_pin, LOW);
   int R = frequency;
   // Printing the value on the serial monitor
   if(serial_print_rgb_vals)
@@ -51,10 +51,10 @@ int ColorSensorTCS3200::readColor(bool serial_print_rgb_vals)
   delay(50);
 
   // Setting Green filtered photodiodes to be read
-  digitalWrite(S2, HIGH);
-  digitalWrite(S3, HIGH);
+  digitalWrite(m_S2_pin, HIGH);
+  digitalWrite(m_S3_pin, HIGH);
   // Reading the output frequency
-  frequency = pulseIn(sensorOut, LOW);
+  frequency = pulseIn(m_sensor_out_pin, LOW);
   int G = frequency;
   // Printing the value on the serial monitor
   if(serial_print_rgb_vals)
@@ -66,10 +66,10 @@ int ColorSensorTCS3200::readColor(bool serial_print_rgb_vals)
   delay(50);
 
   // Setting Blue filtered photodiodes to be read
-  digitalWrite(S2, LOW);
-  digitalWrite(S3, HIGH);
+  digitalWrite(m_S2_pin, LOW);
+  digitalWrite(m_S3_pin, HIGH);
   // Reading the output frequency
-  frequency = pulseIn(sensorOut, LOW);
+  frequency = pulseIn(m_sensor_out_pin, LOW);
   int B = frequency;
   // Printing the value on the serial monitor
   if(serial_print_rgb_vals)
