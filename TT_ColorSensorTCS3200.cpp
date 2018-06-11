@@ -1,7 +1,7 @@
 #include <Arduino.h>
-#include "ColorSensorTCS3200.h"
+#include "TT_ColorSensorTCS3200.h"
 
-ColorSensorTCS3200::ColorSensorTCS3200()
+TT_ColorSensorTCS3200::TT_ColorSensorTCS3200()
   : m_S0_pin(4), m_S1_pin(5), m_S2_pin(6), m_S3_pin(7), m_sensor_out_pin(8)
   {
     pinMode(m_S0_pin, OUTPUT);
@@ -15,7 +15,7 @@ ColorSensorTCS3200::ColorSensorTCS3200()
     digitalWrite(m_S1_pin,LOW);
   }
 
-ColorSensorTCS3200::ColorSensorTCS3200(uint8_t S0_pin, uint8_t S1_pin,
+TT_ColorSensorTCS3200::TT_ColorSensorTCS3200(uint8_t S0_pin, uint8_t S1_pin,
                                        uint8_t S2_pin, uint8_t S3_pin,
                                        uint8_t sensor_out_pin)
 : m_S0_pin(S0_pin), m_S1_pin(S1_pin),
@@ -33,7 +33,7 @@ ColorSensorTCS3200::ColorSensorTCS3200(uint8_t S0_pin, uint8_t S1_pin,
   digitalWrite(m_S1_pin,LOW);
 }
 
-int ColorSensorTCS3200::readColor(bool serial_print_rgb_vals)
+int TT_ColorSensorTCS3200::readColor(bool serial_print_rgb_vals)
 {
   // Setting red filtered photodiodes to be read
   digitalWrite(m_S2_pin, LOW);
@@ -107,7 +107,7 @@ int ColorSensorTCS3200::readColor(bool serial_print_rgb_vals)
   return color;
 }
 
-void ColorSensorTCS3200::printColor(int delay_time)
+void TT_ColorSensorTCS3200::printColor(int delay_time)
 {
   int color = readColor();
   delay(10);

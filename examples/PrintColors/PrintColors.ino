@@ -1,6 +1,6 @@
-#include <ColorSensorTCS3200.h>
+#include <TT_ColorSensorTCS3200.h>
 
-ColorSensorTCS3200 color_sensor;
+TT_ColorSensorTCS3200 color_sensor;
 
 void setup()
 {

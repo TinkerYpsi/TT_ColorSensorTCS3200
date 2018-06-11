@@ -1,5 +1,5 @@
-#ifndef ColorSensorTCS3200_h
-#define ColorSensorTCS3200_h
+#ifndef TT_ColorSensorTCS3200_h
+#define TT_ColorSensorTCS3200_h
 
 #include <Arduino.h>
 
@@ -12,11 +12,11 @@
 #define BLUE_COLOR      6
 
 
-class ColorSensorTCS3200
+class TT_ColorSensorTCS3200
 {
 public:
-  ColorSensorTCS3200();
-  ColorSensorTCS3200(uint8_t S0_pin, uint8_t S1_pin, uint8_t S2_pin,
+  TT_ColorSensorTCS3200();
+  TT_ColorSensorTCS3200(uint8_t S0_pin, uint8_t S1_pin, uint8_t S2_pin,
                      uint8_t S3_pin, uint8_t sensor_out_pin);
   int readColor(bool serial_print_rgb_vals = false);
   void printColor(int delay_time = 300);
