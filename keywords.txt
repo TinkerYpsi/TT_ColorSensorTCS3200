@@ -1,0 +1,3 @@
+TT_ColorSensorTCS3200		KEYWORD1
+readColor				KEYWORD2
+printColor				KEYWORD2
